@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Centered Boxes</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            display: flex;
+            justify-content: space-between;
+            width: 400px; /* Adjust the total width of the containers */
+        }
+        #box1, #box2 {
+            width: 190px; /* Adjust the width of each box */
+            height: 200px;
+            border: 2px solid black;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="box1"></div>
+        <div id="box2"></div>
+    </div>
+    <input type="range" min="1" max="255" value="50" class="slider" id="r-slider" onchange="updateSlider()">
+    <input type="range" min="1" max="255" value="50" class="slider" id="g-slider" onchange="updateSlider()">
+    <input type="range" min="1" max="255" value="50" class="slider" id="b-slider" onchange="updateSlider()">
+    <p id="r-color"></p>
+    <p id="r-match"></p>
+    <p id="g-color"></p>
+    <p id="g-match"></p>
+    <p id="b-color"></p>
+    <p id="b-match"></p>
+    <p id="t-match"></p>
+    <p id="win"></p>
+</body>
+</html>
+<script>
+    let rbox;
+    let gbox;
+    let bbox;
+    function startgame(){
+        var r = parseInt(Math.random() * 255);
+        var g = parseInt(Math.random() * 255);
+        var b = parseInt(Math.random() * 255);
+        rbox = r;
+        gbox = g;
+        bbox = b;
+        elem = document.getElementById('box1');
+        elem.style.backgroundColor = 'rgb(' + r + ',' + g + ',' + b + ')';
+        document.getElementById('r-slider').value = parseInt(Math.random() * 255);
+        document.getElementById('g-slider').value = parseInt(Math.random() * 255);
+        document.getElementById('b-slider').value = parseInt(Math.random() * 255);
+        updateSlider();
+    }
+    function updateSlider(){
+        elem = document.getElementById('box2');
+        var r =  document.getElementById('r-slider').value;
+        var g =  document.getElementById('g-slider').value;
+        var b =  document.getElementById('b-slider').value;
+        elem.style.backgroundColor = 'rgb(' + r + ',' + g + ',' + b + ')';
+        document.getElementById('r-color').innerHTML = "RED: " + r;
+        document.getElementById('g-color').innerHTML = "GREEN: " + g;
+        document.getElementById('b-color').innerHTML = "BLUE: " + b;
+        checkColor();
+        checkWin();
+    }
+    function checkColor(){
+        var r =  document.getElementById('r-slider').value;
+        var g =  document.getElementById('g-slider').value;
+        var b =  document.getElementById('b-slider').value;
+        var a;
+        var b;
+        var c;
+        if((r/rbox) < 1){
+            a = Math.round(r/rbox*100);
+            document.getElementById('r-match').innerHTML = "RED= " + Math.round(r/rbox*100) + "%";
+        }
+        else{
+            a = Math.round(rbox/r*100);
+            document.getElementById('r-match').innerHTML = "RED= " + Math.round(rbox/r*100) + "%";
+        }
+        if((g/gbox) < 1){
+            b = Math.round(g/gbox*100);
+            document.getElementById('g-match').innerHTML = "GREEN= " + Math.round(g/gbox*100) + "%";
+        }
+        else{
+            b = Math.round(gbox/g*100);
+            document.getElementById('g-match').innerHTML = "GREEN= " + Math.round(gbox/g*100) + "%";
+        }
+        if((b/bbox) < 1){
+            c = Math.round(b/bbox*100);
+            document.getElementById('b-match').innerHTML = "BLUE= " + Math.round(b/bbox*100) + "%";
+        }
+        else{
+            c = Math.round(bbox/b*100);
+            document.getElementById('b-match').innerHTML = "BLUE= " + Math.round(bbox/b*100) + "%";
+        }
+        document.getElementById('t-match').innerHTML = "TOTAL= " + Math.round((a+b+c)/3) + "%";
+    }
+    function checkWin(){
+        var r =  parseInt(document.getElementById('r-slider').value);
+        var g =  parseInt(document.getElementById('g-slider').value);
+        var b =  parseInt(document.getElementById('b-slider').value);
+        if(r == rbox && g == gbox && b == bbox){
+            document.getElementById('win').innerHTML = "YOU WON!";
+        }
+    }
+    window.onload = startgame();
+</script>
