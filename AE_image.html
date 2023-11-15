@@ -5,17 +5,17 @@ permalink: /images/
 ---
 
 <title>LSB Steganography</title>
+<input type="file" id="uploadImage" accept="image/*" onchange="loadFile(event)">
 
 <div>
     <h2>Encode Message</h2>
-    <input type="file" id="uploadImage" accept="image/*"/>
-    <input type="text" id="message" placeholder="Enter message to encode"/>
+    <input type="text" id="message" placeholder="Enter message to encode">
     <button onclick="encodeMessage()">Encode</button>
 </div>
 <div>
     <h2>Decode Message</h2>
-    <input type="file" id="uploadImageToDecode" accept="image/*"/>
     <button onclick="decodeMessage()">Decode</button>
     <p id="decodedMessage"></p>
 </div>
 <canvas id="canvas" style="display:none;"></canvas>
+<img id="output" width="200">
