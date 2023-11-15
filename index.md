@@ -2,7 +2,8 @@
 layout: home
 search_exclude: true
 ---
-A modified blog for CSA Based on Fastpages- Tirth Thakkar & Haseeb Beg   
+
+Image analyzer exemplifying the use of binary, created by William Cheng, Advik Garg, Aashray Reddy, Yeongsu Kim
 
 
 

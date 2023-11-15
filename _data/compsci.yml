@@ -1,10 +1,10 @@
 # CSP course meta data
-Unit1:
+Week1:
   title: Ideation and initial deployment and processing with images
   description:  Utilizing the JavaScript features incorporate binary within the processing and manipulation of images.
   start: 1
   end: 1
-Unit2:
+Week2:
   title: Providing different features with the images and stegonography analysis.
   description: Once analysis has been done with the processing of the initial binary code incorporate different features to analyze, encode, and decode images.
   start: 2
