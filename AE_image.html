@@ -13,16 +13,15 @@ var loadFile = function(event) {
 </script>
 
 
-<title>LSB Steganography</title>
 <input type="file" id="uploadImage" accept="image/*" onchange="loadFile(event)">
 <img id="output" width="200">
 <div>
-    <h2>Encode Message</h2>
+    <h2>Encode Message - LSB</h2>
     <input type="text" id="message" placeholder="Enter message to encode">
     <button onclick="encodeMessage()">Encode</button>
 </div>
 <div>
-    <h2>Decode Message</h2>
+    <h2>Decode Message - LSB</h2>
     <button onclick="decodeMessage()">Decode</button>
     <p id="decodedMessage"></p>
 </div>
