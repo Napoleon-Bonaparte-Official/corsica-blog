@@ -51,6 +51,7 @@ function encode(ctx, width, height, message) {
     }
     
     ctx.putImageData(imageData, 0, 0);
+    downloadImage(canvas.toDataURL('image/png'));
 }
 
 function decode(ctx, width, height) {
@@ -113,3 +114,14 @@ function toBinary(string) {
         return char.charCodeAt(0).toString(2).padStart(8, '0');
     }).join('');
 }
+
+
+function downloadImage(dataUrl) {
+    const link = document.createElement('a');
+    link.href = dataUrl;
+    link.download = 'encoded-image.png';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+}
+
