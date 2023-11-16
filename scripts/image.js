@@ -53,6 +53,55 @@ function encode(ctx, width, height, message) {
     ctx.putImageData(imageData, 0, 0);
 }
 
+function decode(ctx, width, height) {
+    const imageData = ctx.getImageData(0, 0, width, height);
+    let binaryMessage = '';
+    let decodedString = '';
+
+    for (let i = 0; i < imageData.data.length; i += 4) {
+        if (binaryMessage.length >= 8) {
+            const character = fromBinary(binaryMessage.slice(0, 8));
+            if (!isPrintable(character)) {
+                break;
+            }
+            decodedString += character;
+            binaryMessage = binaryMessage.slice(8);
+        }
+        binaryMessage += getLSB(imageData.data[i]);   // Red channel
+        binaryMessage += getLSB(imageData.data[i+1]); // Green channel
+        binaryMessage += getLSB(imageData.data[i+2]); // Blue channel
+    }
+
+    // Process any remaining bits in case the loop ends with a partial character
+    if (binaryMessage.length >= 8) {
+        const character = fromBinary(binaryMessage.slice(0, 8));
+        if (isPrintable(character)) {
+            decodedString += character;
+        }
+    }
+
+    return decodedString;
+}
+
+function isPrintable(character) {
+    const charCode = character.charCodeAt(0);
+    return charCode >= 32 && charCode <= 126; // Printable ASCII range
+}
+
+function getLSB(pixel) {
+    return pixel & 0x1;
+}
+
+function fromBinary(binaryString) {
+    let string = '';
+    for (let i = 0; i < binaryString.length; i += 8) {
+        let byte = binaryString.slice(i, i+8);
+        string += String.fromCharCode(parseInt(byte, 2));
+    }
+    return string;
+}
+
+
 
 function setLSB(pixel, bit) {
     return (pixel & 0xFE) | bit;
