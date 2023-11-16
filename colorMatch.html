@@ -1,3 +1,9 @@
+---
+layout: page
+title: Color Matching Game
+permalink: /images/
+---
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -76,34 +82,34 @@
         var r =  document.getElementById('r-slider').value;
         var g =  document.getElementById('g-slider').value;
         var b =  document.getElementById('b-slider').value;
-        var a;
-        var b;
-        var c;
+        var r1;
+        var g1;
+        var b1;
         if((r/rbox) < 1){
-            a = Math.round(r/rbox*100);
+            r1 = Math.round(r/rbox*100);
             document.getElementById('r-match').innerHTML = "RED= " + Math.round(r/rbox*100) + "%";
         }
-        else{
-            a = Math.round(rbox/r*100);
+        else if((r/rbox) >= 1){
+            r1 = Math.round(rbox/r*100);
             document.getElementById('r-match').innerHTML = "RED= " + Math.round(rbox/r*100) + "%";
         }
         if((g/gbox) < 1){
-            b = Math.round(g/gbox*100);
+            g1 = Math.round(g/gbox*100);
             document.getElementById('g-match').innerHTML = "GREEN= " + Math.round(g/gbox*100) + "%";
         }
-        else{
-            b = Math.round(gbox/g*100);
+        else if((g/gbox) >= 1){
+            g1 = Math.round(gbox/g*100);
             document.getElementById('g-match').innerHTML = "GREEN= " + Math.round(gbox/g*100) + "%";
         }
         if((b/bbox) < 1){
-            c = Math.round(b/bbox*100);
+            b1 = Math.round(b/bbox*100);
             document.getElementById('b-match').innerHTML = "BLUE= " + Math.round(b/bbox*100) + "%";
         }
-        else{
-            c = Math.round(bbox/b*100);
+        else if((b/bbox) >= 1){
+            b1 = Math.round(bbox/b*100);
             document.getElementById('b-match').innerHTML = "BLUE= " + Math.round(bbox/b*100) + "%";
         }
-        document.getElementById('t-match').innerHTML = "TOTAL= " + Math.round((a+b+c)/3) + "%";
+        document.getElementById('t-match').innerHTML = "TOTAL= " + Math.round((r1+g1+b1)/3) + "%";
     }
     function checkWin(){
         var r =  parseInt(document.getElementById('r-slider').value);
