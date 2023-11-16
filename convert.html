@@ -1,0 +1,94 @@
+---
+layout: page
+title: Converter
+permalink: /convert/
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Binary to Text Converter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+
+        #inputBox, #outputBox {
+            width: 80%;
+            margin: 10px;
+            padding: 5px;
+            font-size: 16px;
+        }
+
+        #outputBox {
+            background-color: transparent;
+            min-height: 50px;
+            padding: 10px;
+            color:white;
+        }
+
+        button {
+            font-size: 16px;
+            padding: 8px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h2>Convert Between Binary and Text</h2>
+    <label for="inputBox">Enter Binary or Text:</label>
+    <br>
+    <textarea id="inputBox" placeholder="Enter binary or text"></textarea>
+    <br>
+    <button onclick="convert()">Convert</button>
+    <br>
+    <label for="outputBox">Result:</label>
+    <br>
+    <div id="outputBox"></div>
+
+    <script>
+        function binToText(binary) {
+            const arr = binary.split(" ");
+            var text = "";
+            for(let i = 0; i < arr.length; i++) {
+                let bin = parseInt(arr[i], 2);
+                text += String.fromCharCode(bin);
+            }
+            return text;
+        }
+
+        function textToBin(text) {
+            const arr = text.split("");
+            var bin = "";
+            for(let i = 0; i < arr.length; i++){
+                let num = arr[i].charCodeAt(0);
+                let temp = num.toString(2) + " ";
+                for(let k = temp.length-1; k < 8; k++){
+                    temp = "0" + temp;
+                }
+                bin += temp;
+            }
+            return bin;
+        }
+
+        function convert() {
+            const inputBox = document.getElementById("inputBox");
+            const outputBox = document.getElementById("outputBox");
+            const inputValue = inputBox.value.trim();
+
+            if (/^[01 ]+$/.test(inputValue)) {
+                // Binary input
+                const result = binToText(inputValue);
+                outputBox.textContent = result;
+            } else {
+                // Text input
+                const result = textToBin(inputValue);
+                outputBox.textContent = result;
+            }
+        }
+    </script>
+</body>
+</html>
