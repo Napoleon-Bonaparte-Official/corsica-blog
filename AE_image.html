@@ -4,26 +4,78 @@ title: Image Manipulation
 permalink: /images/
 ---
 
+<style>
+    body {
+        display: flex;
+        margin: 0;
+        font-family: Arial, sans-serif;
+    }
+
+    #sidebar {
+        width: 200px;
+        background-color: #333;
+        padding: 20px;
+        position: fixed;
+        height: 100%;
+        overflow: auto;
+        color: #fff;
+    }
+
+    #content {
+        flex: 1;
+        padding: 20px;
+        margin-left: 220px;
+    }
+
+    button {
+        background-color: #555;
+        color: #fff;
+        padding: 10px;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+    }
+
+    button:hover {
+        background-color: #777;
+    }
+</style>
+
+<div id="sidebar">
+    <h2 style="color: #fff;">LSB Options</h2>
+    <button onclick="toggleLSBSection()">LSB</button>
+</div>
+
+<div id="content">
+
+    <!-- LSB Section -->
+    <section id="lsbSection" style="display: none;">
+        <h1>LSB Image Manipulation</h1>
+
+
+        <input type="file" id="uploadImage" accept="image/*" onchange="loadFile(event)">
+        <img id="output" width="200">
+        <div>
+            <h2>Encode Message - LSB</h2>
+            <input type="text" id="message" placeholder="Enter message to encode">
+            <button onclick="encodeMessage()">Encode</button>
+        </div>
+        <div>
+            <h2>Decode Message - LSB</h2>
+            <button onclick="decodeMessage()">Decode</button>
+            <p id="decodedMessage"></p>
+        </div>
+        <canvas id="canvas" style="display:none;"></canvas>
+        <script src="../scripts/image.js"></script>
+    </section>
+
+
+
+</div>
 
 <script>
-var loadFile = function(event) {
-	var image = document.getElementById('output');
-	image.src = URL.createObjectURL(event.target.files[0]);
-};
+    function toggleLSBSection() {
+        var lsbSection = document.getElementById('lsbSection');
+        lsbSection.style.display = (lsbSection.style.display === 'none') ? 'block' : 'none';
+    }
 </script>
-
-
-<input type="file" id="uploadImage" accept="image/*" onchange="loadFile(event)">
-<img id="output" width="200">
-<div>
-    <h2>Encode Message - LSB</h2>
-    <input type="text" id="message" placeholder="Enter message to encode">
-    <button onclick="encodeMessage()">Encode</button>
-</div>
-<div>
-    <h2>Decode Message - LSB</h2>
-    <button onclick="decodeMessage()">Decode</button>
-    <p id="decodedMessage"></p>
-</div>
-<canvas id="canvas" style="display:none;"></canvas>
-<script src="../scripts/image.js"></script>
