@@ -125,3 +125,123 @@ function downloadImage(dataUrl) {
     document.body.removeChild(link);
 }
 
+
+// Function to perform LSB steganography to hide an image within another image
+function hideImage(originalImage, imageToHide) {
+    // Ensure both images have the same dimensions
+    if (originalImage.width !== imageToHide.width || originalImage.height !== imageToHide.height) {
+        console.error("Images must have the same dimensions.");
+        return null;
+    }
+
+    const canvas = document.createElement('canvas');
+    canvas.width = originalImage.width;
+    canvas.height = originalImage.height;
+
+    const ctx = canvas.getContext('2d');
+    ctx.drawImage(originalImage, 0, 0);
+    const originalImageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+
+    ctx.drawImage(imageToHide, 0, 0);
+    const imageToHideData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+
+    // Loop through each pixel
+    for (let i = 0; i < originalImageData.data.length; i += 4) {
+        // Extract LSBs of each color channel
+        const rOriginalLSB = originalImageData.data[i] & 1;
+        const gOriginalLSB = originalImageData.data[i + 1] & 1;
+        const bOriginalLSB = originalImageData.data[i + 2] & 1;
+
+        const rHiddenLSB = imageToHideData.data[i] & 1;
+        const gHiddenLSB = imageToHideData.data[i + 1] & 1;
+        const bHiddenLSB = imageToHideData.data[i + 2] & 1;
+
+        // Perform XOR operation on LSBs and replace in original image
+        originalImageData.data[i] ^= rHiddenLSB;
+        originalImageData.data[i + 1] ^= gHiddenLSB;
+        originalImageData.data[i + 2] ^= bHiddenLSB;
+
+        // Ensure the alpha channel remains unchanged
+        originalImageData.data[i + 3] = originalImageData.data[i + 3];
+    }
+
+    // Create new image with hidden data
+    ctx.putImageData(originalImageData, 0, 0);
+    const hiddenImage = new Image();
+    hiddenImage.src = canvas.toDataURL();
+    
+    return hiddenImage;
+}
+
+// Function to retrieve the two hidden images from the steganographic image
+function retrieveTwoHiddenImages(steganographicImage) {
+    const canvas = document.createElement('canvas');
+    canvas.width = steganographicImage.width;
+    canvas.height = steganographicImage.height;
+
+    const ctx = canvas.getContext('2d');
+    ctx.drawImage(steganographicImage, 0, 0);
+    const steganographicImageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+
+    const extractedImage1 = ctx.createImageData(canvas.width, canvas.height);
+    const extractedImage2 = ctx.createImageData(canvas.width, canvas.height);
+
+    // Loop through each pixel
+    for (let i = 0; i < steganographicImageData.data.length; i += 4) {
+        // Extract LSBs of each color channel from steganographic image
+        const rSteganographicLSB = steganographicImageData.data[i] & 1;
+        const gSteganographicLSB = steganographicImageData.data[i + 1] & 1;
+        const bSteganographicLSB = steganographicImageData.data[i + 2] & 1;
+
+        // Store LSBs in corresponding extracted images by alternating pixels
+        if ((i / 4) % 2 === 0) {
+            extractedImage1.data[i] = rSteganographicLSB;
+            extractedImage1.data[i + 1] = gSteganographicLSB;
+            extractedImage1.data[i + 2] = bSteganographicLSB;
+            extractedImage1.data[i + 3] = steganographicImageData.data[i + 3];
+        } else {
+            extractedImage2.data[i] = rSteganographicLSB;
+            extractedImage2.data[i + 1] = gSteganographicLSB;
+            extractedImage2.data[i + 2] = bSteganographicLSB;
+            extractedImage2.data[i + 3] = steganographicImageData.data[i + 3];
+        }
+    }
+
+    // Create Image objects for the extracted images
+    ctx.putImageData(extractedImage1, 0, 0);
+    ctx.putImageData(extractedImage2, 0, 0);
+
+    const extractedImageObject1 = new Image();
+    const extractedImageObject2 = new Image();
+
+    extractedImageObject1.src = canvas.toDataURL();
+    extractedImageObject2.src = canvas.toDataURL();
+
+    return [extractedImageObject1, extractedImageObject2];
+}
+
+// Usage example:
+// Assuming 'steganographicImage' is the Image object representing the XOR'ed image containing two hidden images
+// To retrieve the two hidden images:
+// const extractedImages = retrieveTwoHiddenImages(steganographicImage);
+// const extractedImage1 = extractedImages[0];
+// const extractedImage2 = extractedImages[1];
+
+
+
+// Accessing the form
+const stegoForm = document.getElementById('stegoForm');
+
+// Handling form submission
+stegoForm.addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent the default form submission
+
+    // Accessing the selected value from the dropdown
+    const selectedValue = document.getElementById('stegotype').value;
+
+    // Do something with the selected value (for example, display it)
+    console.log('Selected value:', selectedValue);
+
+    // You can add your logic here based on the selected value
+    // For example, perform different actions based on the selected steganography type
+});

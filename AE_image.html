@@ -53,8 +53,17 @@ permalink: /images/
         <h1>LSB Image Manipulation</h1>
 
 
-        <input type="file" id="uploadImage" accept="image/*" onchange="loadFile(event)">
-        <img id="output" width="200">
+        <form id="stegoForm">
+    <label for="stegotype">Choose type of steganography:</label>
+    <select id="stegotype" name="stegotype">
+        <option value="lsb">LSB</option>
+        <option value="msb">MSB</option>
+        <option value="xor">XOR(two images)</option>
+    </select>
+    <input type="submit" value="Submit">
+        </form>
+
+
         <div>
             <h2>Encode Message - LSB</h2>
             <input type="text" id="message" placeholder="Enter message to encode">
@@ -65,8 +74,8 @@ permalink: /images/
             <button onclick="decodeMessage()">Decode</button>
             <p id="decodedMessage"></p>
         </div>
-        <canvas id="canvas" style="display:none;"></canvas>
-        <script src="../scripts/image.js"></script>
+        <canvas id="canvas" style="display:none;"></canvas>        <script src="../scripts/image.js"></script>
+
     </section>
 
 
