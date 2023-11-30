@@ -10,7 +10,7 @@ permalink: /images/
         margin: 0;
         font-family: Arial, sans-serif;
     }
-
+/* 
     #sidebar {
         width: 200px;
         background-color: #333;
@@ -19,7 +19,7 @@ permalink: /images/
         height: 100%;
         overflow: auto;
         color: #fff;
-    }
+    } */
 
     #content {
         flex: 1;
@@ -41,19 +41,17 @@ permalink: /images/
     }
 </style>
 
-<div id="sidebar">
+<!-- <div id="sidebar">
     <h2 style="color: #fff;">LSB Options</h2>
     <button onclick="toggleLSBSection()">LSB</button>
-</div>
+</div> -->
 
 <div id="content">
 
     <!-- LSB Section -->
-    <section id="lsbSection" style="display: none;">
-        <h1>LSB Image Manipulation</h1>
 
 
-        <form id="stegoForm">
+    <form id="stegoForm">
     <label for="stegotype">Choose type of steganography:</label>
     <select id="stegotype" name="stegotype">
         <option value="lsb">LSB</option>
@@ -74,17 +72,11 @@ permalink: /images/
             <button onclick="decodeMessage()">Decode</button>
             <p id="decodedMessage"></p>
         </div>
-        <canvas id="canvas" style="display:none;"></canvas>        <script src="../scripts/image.js"></script>
+        <canvas id="canvas" style="display:none;"></canvas>        
+        <script src="../scripts/image.js"></script>
 
     </section>
 
 
 
 </div>
-
-<script>
-    function toggleLSBSection() {
-        var lsbSection = document.getElementById('lsbSection');
-        lsbSection.style.display = (lsbSection.style.display === 'none') ? 'block' : 'none';
-    }
-</script>
