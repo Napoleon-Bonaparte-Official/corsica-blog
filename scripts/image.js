@@ -1,10 +1,10 @@
-function encodeMessage() {
+function lsbencodeMessage() {
     const message = document.getElementById('message').value;
     const imageFile = document.getElementById('uploadImage').files[0];
     processImage(imageFile, message);
 }
 
-function decodeMessage() {
+function lsbdecodeMessage() {
     const imageFile = document.getElementById('uploadImage').files[0];
     processImage(imageFile, null, true);
 }
@@ -245,3 +245,11 @@ stegoForm.addEventListener('submit', function(event) {
     // You can add your logic here based on the selected value
     // For example, perform different actions based on the selected steganography type
 });
+
+
+function encodeMessage() {
+
+}
+function decodeMessage() {
+
+}
