@@ -1,3 +1,4 @@
+
 function evaluateExpression() {
     const expressionInput = document.getElementById('expression').value;
     const variables = extractVariables(expressionInput);
@@ -18,14 +19,14 @@ function generateTruthTable(variables) {
     const numRows = Math.pow(2, variables.length);
     const truthTable = [];
 
-    for (let i = 0; i < numRows; i++) {
+    for (let i = 0; i < numRows; i++){
         const row = {};
         for (let j = 0; j < variables.length; j++) {
             row[variables[j]] = Boolean(i & (1 << j));
         }
         truthTable.push(row);
     }
-
+    console.log(truthTable);
     return truthTable;
 }
 
@@ -33,6 +34,8 @@ function evaluateForAllCombinations(expression, variables, truthTable) {
     const results = [];
     for (const row of truthTable) {
         const expressionWithValues = expression.replace(/[A-Za-z]+/g, match => row[match]);
+        console.log(expressionWithValues);
+        console.log(expression) 
         results.push({
             values: Object.values(row),
             result: eval(expressionWithValues)

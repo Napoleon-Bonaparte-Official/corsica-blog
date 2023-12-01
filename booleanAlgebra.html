@@ -1,3 +1,8 @@
+---
+layout: page
+title: Boolean Algebra Calculator
+permalink: /boolAlgCalc/
+---
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,7 +17,7 @@
         }
 
         h2 {
-            color: #333;
+            color: white;
         }
 
         label {
@@ -25,21 +30,20 @@
             width: 300px;
         }
 
+        #but {
+            background:white;
+        }
+
         button {
             padding: 8px;
-            background-color: #4CAF50;
             color: white;
             border: none;
             cursor: pointer;
         }
 
-        button:hover {
-            background-color: #45a049;
-        }
-
         h3 {
             margin-top: 20px;
-            color: #333;
+            color: white;
         }
 
         table {
@@ -55,7 +59,6 @@
         }
 
         th {
-            background-color: #4CAF50;
             color: white;
         }
 
@@ -67,16 +70,15 @@
 <body>
 
     <h2>Boolean Algebra Calculator</h2>
-
     <label for="expression">Enter Boolean Expression:</label>
-    <input type="text" id="expression" placeholder="Example: (A && B) || (C && !D)">
-    <button onclick="evaluateExpression()">Evaluate</button>
+    <input type="text" id="expression" placeholder="Enter Expression: ">
+    <button id = "but" onclick="evaluateExpression()">Evaluate</button>
 
     <h3>Truth Table</h3>
     <table id="truthTable">
         <!-- Truth table will be displayed here -->
     </table>
-    <script src="booleanAlgebraCalc.js"></script>
+    <script src="/corsica-frontend/booleanAlgebraCalc.js"></script>
 </body>
 
 </html>
