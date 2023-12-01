@@ -1,15 +1,15 @@
 function lsbencodeMessage() {
     const message = document.getElementById('message').value;
     const imageFile = document.getElementById('uploadImage').files[0];
-    processImage(imageFile, message);
+    lsbProcessImage(imageFile, message);
 }
 
 function lsbdecodeMessage() {
     const imageFile = document.getElementById('uploadImage').files[0];
-    processImage(imageFile, null, true);
+    lsbProcessImage(imageFile, null, true);
 }
 
-function processImage(imageFile, message, isDecode = false) {
+function lsbProcessImage(imageFile, message, isDecode = false) {
     const reader = new FileReader();
     reader.onload = function(event) {
         const img = new Image();
@@ -20,10 +20,10 @@ function processImage(imageFile, message, isDecode = false) {
             const ctx = canvas.getContext('2d');
             ctx.drawImage(img, 0, 0);
             if (isDecode) {
-                const decodedMessage = decode(ctx, img.width, img.height);
+                const decodedMessage = lsbdecode(ctx, img.width, img.height);
                 document.getElementById('decodedMessage').innerText = decodedMessage;
             } else {
-                encode(ctx, img.width, img.height, message);
+                lsbencode(ctx, img.width, img.height, message);
             }
         }
         img.src = event.target.result;
@@ -31,7 +31,7 @@ function processImage(imageFile, message, isDecode = false) {
     reader.readAsDataURL(imageFile);
 }
 
-function encode(ctx, width, height, message) {
+function lsbencode(ctx, width, height, message) {
     const binaryMessage = toBinary(message);
     let dataIndex = 0;
     const imageData = ctx.getImageData(0, 0, width, height);
@@ -54,7 +54,7 @@ function encode(ctx, width, height, message) {
     downloadImage(canvas.toDataURL('image/png'));
 }
 
-function decode(ctx, width, height) {
+function lsbdecode(ctx, width, height) {
     const imageData = ctx.getImageData(0, 0, width, height);
     let binaryMessage = '';
     let decodedString = '';
@@ -232,6 +232,8 @@ function retrieveTwoHiddenImages(steganographicImage) {
 // Accessing the form
 const stegoForm = document.getElementById('stegoForm');
 
+let selectedValue = "lsb"; // Initialize as LSB
+
 // Handling form submission
 stegoForm.addEventListener('submit', function(event) {
     event.preventDefault(); // Prevent the default form submission
@@ -248,8 +250,28 @@ stegoForm.addEventListener('submit', function(event) {
 
 
 function encodeMessage() {
+    selectedValue = document.getElementById('stegotype').value;
+    if (selectedValue == "lsb") {
+        lsbencodeMessage();
+        console.log("did it work?")
+    }
+    else if (selectedValue == "xor") {
+        console.log("poggers xor moment")
+    }
+    else if (selectedValue == "msb") {
 
+    }
 }
 function decodeMessage() {
+    selectedValue = document.getElementById('stegotype').value;
+    if (selectedValue == "lsb") {
+        lsbdecodeMessage();
+        console.log("did it work?")
+    }
+    else if (selectedValue == "xor") {
+        console.log("poggers xor moment")
+    }
+    else if (selectedValue == "msb") {
 
+    }
 }
