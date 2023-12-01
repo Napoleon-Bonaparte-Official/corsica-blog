@@ -1,11 +1,11 @@
 function lsbencodeMessage() {
     const message = document.getElementById('message').value;
-    const imageFile = document.getElementById('uploadImage').files[0];
+    const imageFile = document.getElementById('image1').files[0];
     lsbProcessImage(imageFile, message);
 }
 
 function lsbdecodeMessage() {
-    const imageFile = document.getElementById('uploadImage').files[0];
+    const imageFile = document.getElementById('image1').files[0];
     lsbProcessImage(imageFile, null, true);
 }
 
@@ -139,6 +139,7 @@ function hideImage(originalImage, imageToHide) {
     canvas.height = originalImage.height;
 
     const ctx = canvas.getContext('2d');
+    console.log(typeof originalImage)
     ctx.drawImage(originalImage, 0, 0);
     const originalImageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
 
@@ -167,10 +168,8 @@ function hideImage(originalImage, imageToHide) {
 
     // Create new image with hidden data
     ctx.putImageData(originalImageData, 0, 0);
-    const hiddenImage = new Image();
-    hiddenImage.src = canvas.toDataURL();
-    
-    return hiddenImage;
+    const hiddenImage = canvas.toDataURL();
+    download(hiddenImage);
 }
 
 // Function to retrieve the two hidden images from the steganographic image
@@ -256,7 +255,9 @@ function encodeMessage() {
         console.log("did it work?")
     }
     else if (selectedValue == "xor") {
-        console.log("poggers xor moment")
+        var image1 = document.getElementById('image1').files[0];
+        var image2 = document.getElementById('image2').files[0];
+        hideImage(image1, image2);
     }
     else if (selectedValue == "msb") {
 
