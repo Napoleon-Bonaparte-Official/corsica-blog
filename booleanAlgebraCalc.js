@@ -48,10 +48,8 @@ function evaluateForAllCombinations(expression, variables, truthTable) {
 function displayTruthTable(variables, truthTable, results) {
     const tableElement = document.getElementById('truthTable');
 
-    // Clear previous content
     tableElement.innerHTML = '';
 
-    // Display header row with variable names
     const headerRow = document.createElement('tr');
     for (const variable of variables) {
         const headerCell = document.createElement('th');
@@ -63,18 +61,17 @@ function displayTruthTable(variables, truthTable, results) {
     headerRow.appendChild(resultHeader);
     tableElement.appendChild(headerRow);
 
-    // Display truth table rows
     for (let i = 0; i < truthTable.length; i++) {
         const row = truthTable[i];
         const result = results[i];
         const tableRow = document.createElement('tr');
         for (const variable of variables) {
         const cell = document.createElement('td');
-        cell.textContent = row[variable] ? '1' : '0';
+        cell.textContent = row[variable] ? 'true' : 'false';
         tableRow.appendChild(cell);
         }
         const resultCell = document.createElement('td');
-        resultCell.textContent = result.result ? '1' : '0';
+        resultCell.textContent = result.result ? 'true' : 'false';
         tableRow.appendChild(resultCell);
         tableElement.appendChild(tableRow);
     }
