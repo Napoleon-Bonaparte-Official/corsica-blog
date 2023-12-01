@@ -1,11 +1,11 @@
 # CSP course meta data
-Week1:
-  title: Ideation and initial deployment and processing with images
+Unit1:
+  title: Ideation and initial deployment and processing with images, focus on LSB and then we migrate to other methods.
   description:  Utilizing the JavaScript features incorporate binary within the processing and manipulation of images.
+  start: 0
+  end: 0
+Unit2:
+  title: Providing more stegonography features and then adding color matching, binary and text converter, boolean algebra
+  description: XOR, MBR.
   start: 1
   end: 1
-Week2:
-  title: Providing different features with the images and stegonography analysis.
-  description: Once analysis has been done with the processing of the initial binary code incorporate different features to analyze, encode, and decode images.
-  start: 2
-  end: 2
