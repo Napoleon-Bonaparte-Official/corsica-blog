@@ -3,25 +3,15 @@ layout: page
 permalink: /colorGame/
 ---
 
-    <style>
-        /* body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
-        .container {
-            display: flex;
-            justify-content: space-between;
-            width: 400px;  Adjust the total width of the containers 
-        } */
-        #box1, #box2 {
-            width: 190px; /* Adjust the width of each box */
-            height: 200px;
-            border: 2px solid black;
-        }
-    </style>
+<style>
+    #box1,
+    #box2 {
+        width: 190px;
+        /* Adjust the width of each box */
+        height: 200px;
+        border: 2px solid black;
+    }
+</style>
 
 <body>
     <div class="container">
@@ -31,20 +21,31 @@ permalink: /colorGame/
     <input type="range" min="1" max="255" value="50" class="slider" id="r-slider" onchange="updateSlider()">
     <input type="range" min="1" max="255" value="50" class="slider" id="g-slider" onchange="updateSlider()">
     <input type="range" min="1" max="255" value="50" class="slider" id="b-slider" onchange="updateSlider()">
-    <p id="r-color"></p>
-    <p id="r-match"></p>
-    <p id="g-color"></p>
-    <p id="g-match"></p>
-    <p id="b-color"></p>
-    <p id="b-match"></p>
-    <p id="t-match"></p>
-    <p id="win"></p>
+
+    <div class="card">
+        <p id="r-color"></p>
+        <p id="r-match"></p>
+
+        <p id="g-color"></p>
+        <p id="g-match"></p>
+
+        <p id="b-color"></p>
+        <p id="b-match"></p>
+    </div>
+
+    <br>
+
+    <div class="card">
+        <p id="t-match"></p>
+        <p id="win"></p>
+    </div>
 </body>
+
 <script>
     let rbox;
     let gbox;
     let bbox;
-    function startgame(){
+    function startgame() {
         var r = parseInt(Math.random() * 255);
         var g = parseInt(Math.random() * 255);
         var b = parseInt(Math.random() * 255);
@@ -58,11 +59,11 @@ permalink: /colorGame/
         document.getElementById('b-slider').value = parseInt(Math.random() * 255);
         updateSlider();
     }
-    function updateSlider(){
+    function updateSlider() {
         elem = document.getElementById('box2');
-        var r =  document.getElementById('r-slider').value;
-        var g =  document.getElementById('g-slider').value;
-        var b =  document.getElementById('b-slider').value;
+        var r = document.getElementById('r-slider').value;
+        var g = document.getElementById('g-slider').value;
+        var b = document.getElementById('b-slider').value;
         elem.style.backgroundColor = 'rgb(' + r + ',' + g + ',' + b + ')';
         document.getElementById('r-color').innerHTML = "RED: " + r + " " + decimalToBinary(r);
         document.getElementById('g-color').innerHTML = "GREEN: " + g + " " + decimalToBinary(g);
@@ -70,43 +71,43 @@ permalink: /colorGame/
         checkColor();
         checkWin();
     }
-    function checkColor(){
-        var r =  document.getElementById('r-slider').value;
-        var g =  document.getElementById('g-slider').value;
-        var b =  document.getElementById('b-slider').value;
+    function checkColor() {
+        var r = document.getElementById('r-slider').value;
+        var g = document.getElementById('g-slider').value;
+        var b = document.getElementById('b-slider').value;
         var r1;
         var g1;
         var b1;
-        if((r/rbox) < 1){
-            r1 = Math.round(r/rbox*100);
-            document.getElementById('r-match').innerHTML = "RED= " + Math.round(r/rbox*100) + "%";
+        if ((r / rbox) < 1) {
+            r1 = Math.round(r / rbox * 100);
+            document.getElementById('r-match').innerHTML = "RED= " + Math.round(r / rbox * 100) + "%";
         }
-        else if((r/rbox) >= 1){
-            r1 = Math.round(rbox/r*100);
-            document.getElementById('r-match').innerHTML = "RED= " + Math.round(rbox/r*100) + "%";
+        else if ((r / rbox) >= 1) {
+            r1 = Math.round(rbox / r * 100);
+            document.getElementById('r-match').innerHTML = "RED= " + Math.round(rbox / r * 100) + "%";
         }
-        if((g/gbox) < 1){
-            g1 = Math.round(g/gbox*100);
-            document.getElementById('g-match').innerHTML = "GREEN= " + Math.round(g/gbox*100) + "%";
+        if ((g / gbox) < 1) {
+            g1 = Math.round(g / gbox * 100);
+            document.getElementById('g-match').innerHTML = "GREEN= " + Math.round(g / gbox * 100) + "%";
         }
-        else if((g/gbox) >= 1){
-            g1 = Math.round(gbox/g*100);
-            document.getElementById('g-match').innerHTML = "GREEN= " + Math.round(gbox/g*100) + "%";
+        else if ((g / gbox) >= 1) {
+            g1 = Math.round(gbox / g * 100);
+            document.getElementById('g-match').innerHTML = "GREEN= " + Math.round(gbox / g * 100) + "%";
         }
-        if((b/bbox) < 1){
-            b1 = Math.round(b/bbox*100);
-            document.getElementById('b-match').innerHTML = "BLUE= " + Math.round(b/bbox*100) + "%";
+        if ((b / bbox) < 1) {
+            b1 = Math.round(b / bbox * 100);
+            document.getElementById('b-match').innerHTML = "BLUE= " + Math.round(b / bbox * 100) + "%";
         }
-        else if((b/bbox) >= 1){
-            b1 = Math.round(bbox/b*100);
-            document.getElementById('b-match').innerHTML = "BLUE= " + Math.round(bbox/b*100) + "%";
+        else if ((b / bbox) >= 1) {
+            b1 = Math.round(bbox / b * 100);
+            document.getElementById('b-match').innerHTML = "BLUE= " + Math.round(bbox / b * 100) + "%";
         }
-        document.getElementById('t-match').innerHTML = "TOTAL= " + Math.round((r1+g1+b1)/3) + "%";
+        document.getElementById('t-match').innerHTML = "TOTAL= " + Math.round((r1 + g1 + b1) / 3) + "%";
     }
-    function checkWin(){
-        var r =  parseInt(document.getElementById('r-slider').value);
-        var g =  parseInt(document.getElementById('g-slider').value);
-        var b =  parseInt(document.getElementById('b-slider').value);
+    function checkWin() {
+        var r = parseInt(document.getElementById('r-slider').value);
+        var g = parseInt(document.getElementById('g-slider').value);
+        var b = parseInt(document.getElementById('b-slider').value);
     }
     function decimalToBinary(decimalNum) {
         if (decimalNum === 0) {
@@ -119,6 +120,6 @@ permalink: /colorGame/
         }
         binaryResult = '0b' + binaryResult;
         return binaryResult;
-    }    
+    }
     window.onload = startgame();
 </script>

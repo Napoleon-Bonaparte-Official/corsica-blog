@@ -27,7 +27,7 @@ button {
 
 //button
 
-button {
+.buttonLarge {
     background-color: $neutralBackground !important;
     padding: 1.5em 1.5em;
     border: none;
@@ -38,6 +38,51 @@ button {
     text-align: center;
     outline: none;
     cursor: pointer;
+}
+
+.buttonNormal {
+    background-color: $neutralBackground !important;
+    padding: 0.5em 0.5em;
+    border: none;
+    border-radius: .5rem !important;
+    color: black;
+    font-size: 1rem;
+    text-align: center;
+    outline: none;
+    cursor: pointer;
+}
+
+.buttonNormalDark {
+    background-color: $dark-grey !important;
+    padding: 0.5em 0.5em;
+    border: none;
+    border-radius: .5rem !important;
+    color: black;
+    font-size: 1rem;
+    text-align: center;
+    outline: none;
+    cursor: pointer;
+}
+
+//input fields
+input {
+    background-color: $neutralBackground !important;
+    padding: 0.5em 0.5em;
+    border: none;
+    border-radius: .5rem !important;
+    color: black;
+    font-size: 1rem;
+    font-weight: 700;
+    outline: none;
+}
+
+//card
+.card {
+    background-color: #292929;
+    transition: 0.3s;
+    width: 40%;
+    border-radius: 5px;
+    padding: 1.5rem 1.5rem;
 }
 
 button:hover {

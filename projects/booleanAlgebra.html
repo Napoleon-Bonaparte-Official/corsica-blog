@@ -4,54 +4,29 @@ permalink: /boolAlgCalc/
 ---
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Boolean Algebra Calculator</title>
     <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            margin: 20px;
-            text-align: center;
-        }
-
-        h2 {
-            color: white;
-        }
-
         label {
             display: block;
             margin: 10px 0;
         }
 
-        input {
-            padding: 5px;
-            width: 300px;
-        }
-
         #but {
-            background:white;
+            background: white;
         }
-
-        button {
-            padding: 8px;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-
-        h3 {
-            margin-top: 20px;
-            color: white;
-        }
-
-        table {
+        
+        /* table {
             border-collapse: collapse;
             width: 100%;
             margin-top: 10px;
         }
 
-        th, td {
+        th,
+        td {
             border: 1px solid #ddd;
             padding: 8px;
             text-align: center;
@@ -63,20 +38,24 @@ permalink: /boolAlgCalc/
 
         tr:nth-child(even) {
             background-color: #f2f2f2;
-        }
+        } */
+
     </style>
 </head>
+
 <body>
+
 
     <h2>Boolean Algebra Calculator</h2>
     <label for="expression">Enter Boolean Expression:</label>
     <input type="text" id="expression" placeholder="Enter Expression: ">
-    <button id = "but" onclick="evaluateExpression()">Evaluate</button>
-    <h2>Expression:</h3>
-    <h3 id = "express"></h3>
-    <h3>Truth Table</h3>
+    <br>
+    <br>
+    <button class="buttonNormal" id="but" onclick="evaluateExpression()">Evaluate</button>
+
+    <!-- <h3>Truth Table</h3>
     <table id="truthTable">
-    </table>
+    </table> -->
     <script src="/corsica-frontend/booleanAlgebraCalc.js"></script>
 </body>
 
