@@ -1,6 +1,6 @@
 _site
 scripts/__pycache__/
-_posts/*_IPYNB_2_.md
+#_posts/*_IPYNB_2_.md
 nohup.out
 Gemfile.lock
 *.pyc
