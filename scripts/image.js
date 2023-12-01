@@ -275,7 +275,15 @@ function decodeMessage() {
         console.log("did it work?")
     }
     else if (selectedValue == "xor") {
-        console.log("poggers xor moment")
+        var image1 = document.getElementById('image1').files[0];
+        var image2 = document.getElementById('image2').files[0];
+
+        // Check if both files are selected before calling hideImage
+        if (image1 && image2) {
+            xorHideImage(image1, image2);
+        } else {
+            console.error("Please select both images for XOR steganography.");
+        }
     }
     else if (selectedValue == "msb") {
 
