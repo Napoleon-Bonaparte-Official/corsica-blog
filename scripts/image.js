@@ -1,3 +1,106 @@
+// Function to perform MSB steganography to hide a message within an image
+function msbEncodeMessage() {
+    const message = document.getElementById('message').value;
+    const imageFile = document.getElementById('image1').files[0];
+    msbProcessImage(imageFile, message);
+}
+
+
+// Function to perform MSB decoding
+function msbDecodeMessage() {
+    const imageFile = document.getElementById('image1').files[0];
+    msbProcessImage(imageFile, null, true);
+}
+
+// Function to perform MSB steganography (both encoding and decoding)
+function msbProcessImage(imageFile, message, isDecode = false) {
+    const reader = new FileReader();
+    reader.onload = function (event) {
+        const img = new Image();
+        img.onload = function () {
+            const canvas = document.getElementById('canvas');
+            canvas.width = img.width;
+            canvas.height = img.height;
+            const ctx = canvas.getContext('2d');
+            ctx.drawImage(img, 0, 0);
+            if (isDecode) {
+                const decodedMessage = msbDecode(ctx, img.width, img.height);
+                document.getElementById('decodedMessage').innerText = decodedMessage;
+            } else {
+                msbEncode(ctx, img.width, img.height, message);
+            }
+        };
+        img.src = event.target.result;
+    };
+    reader.readAsDataURL(imageFile);
+}
+
+// Function to perform MSB encoding
+function msbEncode(ctx, width, height, message) {
+    const binaryMessage = toBinary(message);
+    let dataIndex = 0;
+    const imageData = ctx.getImageData(0, 0, width, height);
+
+    // Loop through each pixel
+    for (let i = 0; i < imageData.data.length; i += 4) {
+        if (dataIndex < binaryMessage.length) {
+            imageData.data[i] = setMSB(imageData.data[i], binaryMessage[dataIndex++]); // Red channel set the MSB
+            if (dataIndex < binaryMessage.length) {
+                imageData.data[i + 1] = setMSB(imageData.data[i + 1], binaryMessage[dataIndex++]); // Green channel
+            }
+            if (dataIndex < binaryMessage.length) {
+                imageData.data[i + 2] = setMSB(imageData.data[i + 2], binaryMessage[dataIndex++]); // Blue channel
+            }
+        } else { // Add a non-plaintext character after the message is done (easier to decode)
+            break;
+        }
+    }
+
+    ctx.putImageData(imageData, 0, 0);
+    downloadImage(canvas.toDataURL('image/png'));
+}
+
+// Function to perform MSB decoding
+function msbDecode(ctx, width, height) {
+    const imageData = ctx.getImageData(0, 0, width, height);
+    let binaryMessage = '';
+    let decodedString = '';
+
+    for (let i = 0; i < imageData.data.length; i += 4) {
+        if (binaryMessage.length >= 8) {
+            const character = fromBinary(binaryMessage.slice(0, 8));
+            if (!isPrintable(character)) {
+                break;
+            }
+            decodedString += character;
+            binaryMessage = binaryMessage.slice(8);
+        }
+        binaryMessage += getMSB(imageData.data[i]);   // Red channel
+        binaryMessage += getMSB(imageData.data[i + 1]); // Green channel
+        binaryMessage += getMSB(imageData.data[i + 2]); // Blue channel
+    }
+
+    // Process any remaining bits in case the loop ends with a partial character
+    if (binaryMessage.length >= 8) {
+        const character = fromBinary(binaryMessage.slice(0, 8));
+        if (isPrintable(character)) {
+            decodedString += character;
+        }
+    }
+
+    return decodedString;
+}
+
+// Function to get the MSB of a pixel
+function getMSB(pixel) {
+    return (pixel >> 7) & 1;
+}
+
+// Function to set the MSB of a pixel
+function setMSB(pixel, bit) {
+    return (pixel & 0xFE) | (bit << 7);
+}
+
 // Function to perform LSB steganography to hide a message within an image
 function lsbencodeMessage() {
     const message = document.getElementById('message').value;
@@ -265,7 +368,7 @@ function encodeMessage() {
             console.error("Please select both images for XOR steganography.");
         }
     } else if (selectedValue == "msb") {
-        // Handle MSB steganography
+        msbEncodeMessage();
     }
 }
 function decodeMessage() {
@@ -286,6 +389,6 @@ function decodeMessage() {
         }
     }
     else if (selectedValue == "msb") {
-
+        msbDecodeMessage();
     }
 }
