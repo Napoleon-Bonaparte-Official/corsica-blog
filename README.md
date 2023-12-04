@@ -185,12 +185,12 @@ bundle install
 - fyi, the schedule.html could work for another type of page.  For instance, you could make a csa.md, _data/csa.yml, and tag files with `csa: {week: 0}` under courses.
 
 
-
-
-
-
-
-
+\
+\
+\
+\
+\
+\
 
 # IMPORTANT
 
