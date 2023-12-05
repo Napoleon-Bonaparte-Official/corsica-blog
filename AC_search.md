@@ -3,6 +3,7 @@ layout: base
 permalink: /search/
 title: Search
 search_exclude: true
+# search page
 ---
 
 <!-- adapted from https://github.com/pmarsceill/just-the-docs -->
@@ -11,7 +12,8 @@ search_exclude: true
 
 <div class="search">
     <div class="search-input-wrap">
-    <input type="text" class="js-search-input search-input input-block form-control" tabindex="0" placeholder="Search {{ site.title }}" aria-label="Search {{ site.title }}" autocomplete="off">
+        <input type="text" class="js-search-input search-input input-block form-control" tabindex="0"
+            placeholder="Search {{ site.title }}" aria-label="Search {{ site.title }}" autocomplete="off">
     </div>
     <br>
     <div class="js-search-results search-results-wrap"></div>

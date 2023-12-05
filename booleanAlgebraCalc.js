@@ -1,37 +1,34 @@
-
 function evaluateExpression() {
-    const expressionInput = document.getElementById('expression').value;
-    const variables = extractVariables(expressionInput);
+    const expressionInput = document.getElementById('expression').value; //get text
+    const variables = extractVariables(expressionInput); //remove variables
 
     const truthTable = generateTruthTable(variables);
     const results = evaluateForAllCombinations(expressionInput, variables, truthTable);
 
     displayTruthTable(variables, truthTable, results);
-    translateExpression(expressionInput)
+    translateExpression(expressionInput)//; //translates expressions
 }
 
-function extractVariables(expression) {
+function extractVariables(expression) { //uses regex to take out the variables
     const variableRegex = /[A-Za-z]+/g;
     const variables = new Set(expression.match(variableRegex));
     return [...variables];
 }
 
-function translateExpression(expression)
-{
+function translateExpression(expression) { //convert symbols to code (+ --> &&)
     let express = "";
-    for(let i = 0; i < expression.length; i++)
-    {
-        if(expression.substring(i,i+1)=="+"){
-            express+= " AND "
+    for (let i = 0; i < expression.length; i++) {
+        if (expression.substring(i, i + 1) == "+") {
+            express += " AND "
         }
-        else if(expression.substring(i,i+1)=="*"){
-            express+= " OR "
+        else if (expression.substring(i, i + 1) == "*") {
+            express += " OR "
         }
-        else if(expression.substring(i,i+1)=="!"){
-            express+= " NOT "
+        else if (expression.substring(i, i + 1) == "!") {
+            express += " NOT "
         }
-        else{
-            express+=expression.substring(i,i+1)
+        else {
+            express += expression.substring(i, i + 1)
         }
     }
     const tableElement = document.getElementById('express');
@@ -43,7 +40,7 @@ function generateTruthTable(variables) {
     const numRows = Math.pow(2, variables.length);
     const truthTable = [];
 
-    for (let i = 0; i < numRows; i++){
+    for (let i = 0; i < numRows; i++) {
         const row = {};
         for (let j = 0; j < variables.length; j++) {
             row[variables[j]] = Boolean(i & (1 << j));
@@ -58,7 +55,7 @@ function evaluateForAllCombinations(expression, variables, truthTable) {
     const results = [];
     for (const row of truthTable) {
         const expressionWithValues = expression.replace(/[A-Za-z]+/g, match => row[match]);
-        console.log(expression) 
+        console.log(expression)
         console.log(expressionWithValues);
         results.push({
             values: Object.values(row),
@@ -90,9 +87,9 @@ function displayTruthTable(variables, truthTable, results) {
         const result = results[i];
         const tableRow = document.createElement('tr');
         for (const variable of variables) {
-        const cell = document.createElement('td');
-        cell.textContent = row[variable] ? 'true' : 'false';
-        tableRow.appendChild(cell);
+            const cell = document.createElement('td');
+            cell.textContent = row[variable] ? 'true' : 'false';
+            tableRow.appendChild(cell);
         }
         const resultCell = document.createElement('td');
         resultCell.textContent = result.result ? 'true' : 'false';
