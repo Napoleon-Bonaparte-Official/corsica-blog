@@ -3,6 +3,7 @@ layout: base
 permalink: /search/
 title: Search
 search_exclude: true
+# search page
 ---
 
 <!-- adapted from https://github.com/pmarsceill/just-the-docs -->
