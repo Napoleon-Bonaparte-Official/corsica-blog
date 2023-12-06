@@ -7,20 +7,16 @@ permalink: /projects/
 
 
 <body>
-  <button class="buttonLarge" onclick="location.href='images/'" type="button">Image Manipulation</button>
+  <button class="buttonLarge" onclick="location.href='boolean-algebra/'" type="button">
+  Boolean Algebra  </button>
 
-  <!-- <br>
-  <br> -->
+  <button class="buttonLarge" onclick="location.href='color-game/'" type="button">
+  Color Matching Game</button>
 
-  <button class="buttonLarge" onclick="location.href='colorGame/'" type="button">Color Matching Game</button>
+  <button class="buttonLarge" onclick="location.href='image-encoder/'" type="button">
+  Image Encoding</button>
 
-  <!-- <br>
-  <br> -->
 
-  <button class="buttonLarge" onclick="location.href='convert/'" type="button">Converter</button>
-
-  <!-- <br>
-  <br> -->
-  
-  <button class="buttonLarge" onclick="location.href='boolAlgCalc/'" type="button">Boolean Algebra</button>
+  <button class="buttonLarge" onclick="location.href='binary-text-coverter/'" type="button">
+  Binary-Text Converter</button>  
 </body>
