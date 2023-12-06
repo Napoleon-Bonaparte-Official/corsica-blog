@@ -1,4 +1,3 @@
-
 function evaluateExpression() {
     const expressionInput = document.getElementById('expression').value;
     const variables = extractVariables(expressionInput);

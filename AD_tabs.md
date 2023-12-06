@@ -5,7 +5,6 @@ permalink: /projects/
 # project list
 ---
 
-
 <body>
   <button class="buttonLarge" onclick="location.href='boolean-algebra/'" type="button">
   Boolean Algebra  </button>
