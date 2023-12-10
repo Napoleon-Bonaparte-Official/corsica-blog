@@ -4,7 +4,7 @@ function evaluateExpression() {
 
     const truthTable = generateTruthTable(variables);
     const results = evaluateForAllCombinations(expressionInput, variables, truthTable);
-
+    console.log("why")
     displayTruthTable(variables, truthTable, results);
     translateExpression(expressionInput)
 }
