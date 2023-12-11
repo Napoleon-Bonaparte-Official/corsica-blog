@@ -358,8 +358,8 @@ function encodeMessage() {
     if (selectedValue == "lsb") {
         lsbencodeMessage();
         console.log("Did it work?");
-        binaryGif.src = "https://cs-p-hq.slack.com/files/U05N5ABTVNX/F069GMSFQ3D/lsb-animation.gif";
-        binaryGif.alt = "LSB GIF";
+        binaryGif.src = "/corsica-frontend/images/lsb-animation.gif";
+        //binaryGif.alt = "LSB GIF";
         binaryGif.style.position = 'fixed';
         binaryGif.style.top = '0';
         binaryGif.style.right = '0';
@@ -394,13 +394,26 @@ function encodeMessage() {
 function decodeMessage() {
     selectedValue = document.getElementById('stegotype').value;
     if (selectedValue == "lsb") {
+        binaryGif.src = "/corsica-frontend/images/lsb-animation.gif";
+        //binaryGif.alt = "LSB GIF";
+        binaryGif.style.position = 'fixed';
+        binaryGif.style.top = '0';
+        binaryGif.style.right = '0';
+        binaryGif.style.maxWidth = '400px'; // Adjust the width as needed
+        binaryGif.style.maxHeight = '400px'; // Adjust the height as needed
         lsbdecodeMessage();
         console.log("did it work?")
     }
     else if (selectedValue == "xor") {
         var image1 = document.getElementById('image1').files[0];
         var image2 = document.getElementById('image2').files[0];
-
+        binaryGif.src = "https://systems-encyclopedia.cs.illinois.edu/articles/static/bitwise-operations/XOR.gif";
+        binaryGif.alt = "XOR GIF";
+        binaryGif.style.position = 'fixed';
+        binaryGif.style.top = '0';
+        binaryGif.style.right = '0';
+        binaryGif.style.maxWidth = '400px'; // Adjust the width as needed
+        binaryGif.style.maxHeight = '400px'; // Adjust the height as needed
         // Check if both files are selected before calling hideImage
         if (image1 && image2) {
             xorHideImage(image1, image2);
