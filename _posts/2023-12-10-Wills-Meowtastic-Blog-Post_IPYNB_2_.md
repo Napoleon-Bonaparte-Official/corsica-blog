@@ -7,3 +7,46 @@ type: plans
 courses: {'compsci': {'week': 0}}
 ---
 
+![alt_text](/corsica-frontend/images/willBlogBanner.jpg "banner")
+
+# (Will) Pawsitively Coding: XORing Images with a Meowtastic Twist
+
+### Introduction
+
+In the feline-filled world of coding, I embarked on a purrfectly delightful journey to create a JavaScript HTML page that not only XORs two images but also celebrates the undeniable charm of our furry friends. As I delved into the whimsical realm of coding and kitties, I encountered a few challenges that made this adventure all the more thrilling.
+
+### The Whisker-Weaving Code
+
+To start my meowsterpiece, I harnessed the power of JavaScript and HTML to craft a pixel-purring playground. The goal was to XOR two images, creating a visually stunning result that could make even the most stoic cat lover crack a smile. The HTML structure set the stage for the feline feast, with two cat images and a canvas eagerly waiting to showcase the magical XOR concoction.
+
+### Encoding
+
+![alt_text](/corsica-frontend/images/willBlog1.png)
+
+So, here's the scoop: there's this function called `xorHideImage` which blends two images together. 
+
+Now, the code starts by checking if the provided images are the right type, like making sure they're HTMLImageElements. But what if they're not they convert the objects and set their source to the images you provided.
+
+Next, it ensures that both images are fully ready for action. It's like making sure your feline friends are all groomed and ready for a photoshoot. If one of them is still putting on their virtual coat, the code patiently waits with the grace of a cat waiting for a treat.
+
+Once both images are in the spotlight and have the same dimensions (because symmetry is key), it's time for the real magic—the XOR steganography! This is where the pixels of one image and the pixels of another engage in a dance, creating a blended masterpiece that's hidden in plain sight.
+
+And that's the purrfectly mysterious journey of the `xorHideImage` function. It's like a secret rendezvous between two images, creating a digital masterpiece that only the keenest eyes can unravel. Cats and code, a meowgical blend of wonder! 🐾✨
+
+![alt_text](/corsica-frontend/images/willBlog2.png)
+
+We first check if our two images are of the same dimension. Now, picture the canvas as a comfy cat bed, ready for a touch of feline charm. It sizes itself up, ensuring no pixel is left untouched, much like a snug cat bed embracing the fluffiness of our fur-iends. And who's the catnip-scented artist? It's the ctx which loads the first image. Hold your whiskers! With getImageData, it's like deciphering the mysterious purr of a content kitty. Then, the second image is added. Enter the loop, where each pixel undergoes a XOR operation (the alpha channel remains untouched). Lastly is the downloadImage function, which lets you save this feline meowsterpiece.
+
+### Decoding
+
+![alt_text](/corsica-frontend/images/willBlog3.png)
+
+### HTML's Sneaky Business
+
+As I eagerly hit the run button, a furrow appeared on my forehead. The images refused to show up! It turns out, the HTML `src` attribute had some sly business going on. To mend the situation, I had to make sure the paths to the cat images were spot-on.
+
+Lesson learned: Cats may be mysterious, but HTML paths should be crystal clear!
+
+### Conclusion
+
+In the end, my journey through the whimsical world of XORing images with a cat-titude was nothing short of enchanting. As I reveled in the triumphs and tackled the tribulations, I couldn't help but appreciate the magic that coding can bring—especially when it involves our four-legged, whisker-twitching friends. So, here's to coding adventures, XOR magic, and a whole lot of cat love!
