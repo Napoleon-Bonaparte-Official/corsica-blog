@@ -358,6 +358,15 @@ function encodeMessage() {
     if (selectedValue == "lsb") {
         lsbencodeMessage();
         console.log("Did it work?");
+        binaryGif.src = "https://cs-p-hq.slack.com/files/U05N5ABTVNX/F069GMSFQ3D/lsb-animation.gif";
+        binaryGif.alt = "LSB GIF";
+        binaryGif.style.position = 'fixed';
+        binaryGif.style.top = '0';
+        binaryGif.style.right = '0';
+        binaryGif.style.maxWidth = '400px'; // Adjust the width as needed
+        binaryGif.style.maxHeight = '400px'; // Adjust the height as needed
+    
+        document.body.appendChild(binaryGif);
     } else if (selectedValue == "xor") {
         var image1 = document.getElementById('image1').files[0];
         var image2 = document.getElementById('image2').files[0];
@@ -368,20 +377,19 @@ function encodeMessage() {
         } else {
             console.error("Please select both images for XOR steganography.");
         }
+        binaryGif.src = "https://systems-encyclopedia.cs.illinois.edu/articles/static/bitwise-operations/XOR.gif";
+        binaryGif.alt = "XOR GIF";
+        binaryGif.style.position = 'fixed';
+        binaryGif.style.top = '0';
+        binaryGif.style.right = '0';
+        binaryGif.style.maxWidth = '400px'; // Adjust the width as needed
+        binaryGif.style.maxHeight = '400px'; // Adjust the height as needed
+    
+        document.body.appendChild(binaryGif);
     } else if (selectedValue == "msb") {
         msbEncodeMessage();
     }
     // Display the XOR GIF on the far right side
-    
-    binaryGif.src = "https://systems-encyclopedia.cs.illinois.edu/articles/static/bitwise-operations/XOR.gif";
-    binaryGif.alt = "XOR GIF";
-    binaryGif.style.position = 'fixed';
-    binaryGif.style.top = '0';
-    binaryGif.style.right = '0';
-    binaryGif.style.maxWidth = '400px'; // Adjust the width as needed
-    binaryGif.style.maxHeight = '400px'; // Adjust the height as needed
-
-    document.body.appendChild(binaryGif);
 } 
 function decodeMessage() {
     selectedValue = document.getElementById('stegotype').value;
