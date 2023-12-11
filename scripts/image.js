@@ -1,3 +1,5 @@
+// const binaryGif = document.createElement('img');
+
 // Function to perform MSB steganography to hide a message within an image
 function msbEncodeMessage() {
     const message = document.getElementById('message').value;
@@ -289,7 +291,6 @@ function lsbdecode(ctx, width, height) {
 
     return decodedString;
 }
-
 // Function to check if a character is printable
 function isPrintable(character) {
     const charCode = character.charCodeAt(0);
@@ -370,7 +371,18 @@ function encodeMessage() {
     } else if (selectedValue == "msb") {
         msbEncodeMessage();
     }
-}
+    // Display the XOR GIF on the far right side
+    
+    // binaryGif.src = "https://systems-encyclopedia.cs.illinois.edu/articles/static/bitwise-operations/XOR.gif";
+    // binaryGif.alt = "XOR GIF";
+    // binaryGif.style.position = 'fixed';
+    // binaryGif.style.top = '0';
+    // binaryGif.style.right = '0';
+    // binaryGif.style.maxWidth = '200px'; // Adjust the width as needed
+    // binaryGif.style.maxHeight = '200px'; // Adjust the height as needed
+
+    // document.body.appendChild(binaryGif);
+} 
 function decodeMessage() {
     selectedValue = document.getElementById('stegotype').value;
     if (selectedValue == "lsb") {
