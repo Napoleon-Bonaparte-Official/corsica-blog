@@ -15,7 +15,6 @@ permalink: /projects/
   <button class="buttonLarge" onclick="location.href='image-encoder/'" type="button">
   Image Encoding</button>
 
-
   <button class="buttonLarge" onclick="location.href='binary-text-coverter/'" type="button">
   Binary-Text Converter</button>  
 </body>
