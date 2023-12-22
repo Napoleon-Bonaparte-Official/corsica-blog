@@ -11,8 +11,6 @@ courses: {'compsci': {'week': 17}}
 # Big Idea 5.6 Safe Computing
 ![Banner](https://media.istockphoto.com/id/875326436/photo/cybersecurity-digital-globe-with-blueprint.jpg?s=1024x1024&w=is&k=20&c=6fcixWvWK7g-e91eI3JQJbGo82iCJnmUNC-Yl2z-dt0=)
 
-# What is Safe Computing?
-
 ## Personal Identifiable Information (PII)
 Personal Identifiable Information or PII is a type of information that is **specific** to you. For example, your age or race would be an example but something like your favorite cat isn’t (Will insists your diet is a PII but it’s not). 
 
@@ -55,8 +53,6 @@ Most if not all financial and government documents should be kept private. Howev
 ### POPCORN HACK 1: 
 > How do you decide what personal information to share online and what to keep confidential?
 
-## PII considerations
-<!-- stuff -->
 
 ## Beware, Establish practices for your own Safety
 #### Authentication
@@ -84,19 +80,6 @@ Strong passwords:
 ### POPCORN HACK 2: 
 > How can multi-factor authentication enhance security?
 
-## Factors to Increase Security of System
-> Encryption is a good way to increase security of a system.
-### Symmetric Encryption - Basic ciphers or codes
-- Symmetric encryption is two ways. You can encrypt it and easily decrypt it with the same methods.
-    - Examples: Caesar cipher, morse code, rail fence cipher, pre shared key etc.
-- Asymmetric encryption is much safer and can be thought of as a one way gate where the encryption method does not work to  decrypt. You would need a separate key to decrypt asymmetric encryption.
-    - Examples: RSA, Diffie-Hellman, Public Key Encryption
-- Firewalls and antivirus
-    - Firewall and antivirus software is a really good and easy way to protect your computer. Pretty much all computers come with this software and are enabled as a default. Just make sure to not disable it!
-
-### POPCORN HACK 3: 
-> What are the key differences between symmetric and asymmetric encryption?
-
 ## Nefarious Uses of Internet
 ### Virus and Malware
 #### Virus
@@ -115,8 +98,6 @@ They could also turn your computer into a rogue access point or a fake wireless 
 
 
 
-
-
 ## Factors to Increase Security of System
 Encryption is a good way to increase security of a system.
 - *Passwords* vs. *keys*: A password is something used to login or unlock an account, while a key is used to encrypt/decrypt the data being used or transferred by that account.<br>
@@ -131,12 +112,18 @@ Encryption is a good way to increase security of a system.
 
 Alice wants to send an encrypted message to her friend Bob.
 With symmetric key encryption, the following process ensues:<br>
-![Alice and Bob Symmetric](https://www.researchgate.net/profile/Martijn-Geurden/publication/327799148/figure/fig1/AS:673332223549445@1537546320191/The-use-of-symmetric-key-encryption-between-Alice-and-Bob-Franciscus-2016.jpg)<br>
-Pretty simple, right! You know what else is simple? Trying to share the encryption/decryption key without letting anyone else know. Enter: Asymmetric Encryption<br>
+![Alice and Bob Symmetric](https://www.researchgate.net/profile/Martijn-Geurden/publication/327799148/figure/fig1/AS:673332223549445@1537546320191/The-use-of-symmetric-key-encryption-between-Alice-and-Bob-Franciscus-2016.jpg)<br><br>
+Pretty simple, right! You know what else is simple? Trying to share the encryption/decryption key without letting anyone else know. Enter: Asymmetric Encryption<br><br>
 ![Bob Public](https://upload.wikimedia.org/wikipedia/commons/0/03/Public_key_encryption_alice_to_bob.svg) ![Alice Public](https://bjc.edc.org/March2019/bjc-r/img/3-lists/525px-Public_key_encryption.png)
 
+
+### POPCORN HACK 3: 
+> What are the key differences between symmetric and asymmetric encryption?
+
+
+
 ### SSL/TLS
-Uses a Certificate Authority(CA) to generate a signed certificate that proves the server's legitamacy.
+Uses a Certificate Authority(CA) to generate a signed certificate that proves the server's legitamacy.<br><br>
 ![CA Diagram](https://media.discordapp.net/attachments/1173345543536259183/1187287947880452126/D9xiAn1zBsCsQAAAABJRU5ErkJggg.png?ex=65965711&is=6583e211&hm=5098ee9dfed78caa6b926f623b6e05662c459a01bc61cebf0f3e8f8b8feb2630&=&format=webp&quality=lossless&width=1036&height=671)
 
 
@@ -162,20 +149,15 @@ Firewall and antivirus software is a really good and easy way to protect your co
 
 ## Homework
 1. Describe PII you have seen on a project in CompSci Principles.
-2. What are your feelings about PII and your personal exposure?
-3. Describe good and bad passwords? What is another step that is used to assist in authentication?
-4. Try to describe Symmetric and Asymmetric encryption.
-5. Provide an example of encryption we used in AWS deployment.
-
-6. Create a python script that lets the user input a password that is checked by the program
-### BONUS: 
-> Use online wordlists to compare the password, preventing dictionary attacks 
+2. Describe good and bad passwords? What is another step that is used to assist in authentication?
+3. Try to describe Symmetric and Asymmetric encryption.
+4. Provide an example of encryption we used in AWS deployment.
+5. Create a python script that lets the user input a password that is checked by the program<br>
+**BONUS**: Use online wordlists to compare the password, preventing dictionary attacks 
 
 
 
 ```python
-# Create a python script that lets the user input a password that is checked by the program
-# BONUS: Use online wordlists to compare the password, preventing dictionary attacks 
+# Code Here for Q5
 
-{MAYBE REMOVE}
 ```
