@@ -18,6 +18,6 @@ permalink: /projects/
   <button class="buttonLarge" onclick="location.href='binary-text-coverter/'" type="button">
   Binary-Text Converter</button>  
 
-  <button class="buttonLarge" onclick="location.href='frontendDesign/'" type="button">
+  <button class="buttonLarge" onclick="location.href='homepage/'" type="button">
   CPT Project</button>  
 </body>

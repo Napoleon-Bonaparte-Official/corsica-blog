@@ -66,20 +66,7 @@
 
             transition: all 0.2s ease-in-out;
 
-            &[type="upload"] {
-                width: 10%;
-
-                &:hover {
-                cursor: pointer;
-                background: rgba(255, 255, 255, 0.2);
-                }
-
-                &:active {
-                    background: rgba(255, 255, 255, 0.2);
-                }
-            }
-
-            &[type="upload2"] {
+            &[type="button"] {
                 width: 10%;
 
                 &:hover {
@@ -130,17 +117,18 @@
 <body>
     <!-- search and upload and home -->
     <header>
-        <a href="#" id="inputField" type="upload">HOME</a>
-        <input type="text" id="inputField" name="searchBar" required minlength="1" placeholder="Search">
-        <button id="inputField" type="upload">Upload</button>
+        <a href="#" id="inputField" type="button">Home</a>
+        <input type="text" id="inputField" placeholder="Search">
+        <a id="inputField" type="button">Upload</a>
+        <a href="#" id="inputField" type="button">Login</a>
     </header>
 
     <!-- navigation chips -->
     <nav>
-        <a href="./category/gaming.html">Gaming</a>
-        <a href="./category/sports.html">Sports</a>
-        <a href="./category/music.html">Music</a>
-        <a href="./category/educational.html">Educational</a>
+        <a href="#">Gaming</a>
+        <a href="#">Sports</a>
+        <a href="#">Music</a>
+        <a href="#">Educational</a>
     </nav>
 
     <hr>
