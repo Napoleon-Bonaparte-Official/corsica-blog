@@ -11,22 +11,36 @@
         }
 
         header {
-            background-color: #1c1c1e;
             color: white;
             padding: 10px;
             text-align: center;
-            height: 37px;
+        }
+
+        header a {
+            text-decoration: none;
         }
 
         nav {
-            background-color: #1c1c1e;
             padding: 10px;
+            text-align: center;
         }
 
         nav a {
             text-decoration: none;
             color: white;
-            margin: 0 10px;
+
+            cursor: pointer;
+            background-color: #2c2c2e;
+            padding: 10px 20px;
+
+            border-radius: 10px;
+            
+            text-align: center;
+            transition: all 0.2s ease-in-out;
+
+            &:hover {
+                background-color: #48484a;
+            }
         }
 
         article {
@@ -37,16 +51,46 @@
             color: white;
         }
 
-        #searchBar{
+        #inputField {
             width: 70%;
-            border-radius:15px;
-            height: 80%;
-        }
+            background-color: #2c2c2e;
+            padding: 1em;
+            border: none;
+            border-left: 1px solid rgba(58, 58, 60, 0.3);
+            border-top: 1px solid rgba(58, 58, 60, 0.3);
+            border-radius: 5000px;
+            box-shadow: 4px 4px 60px rgba(0, 0, 0, 0.2);
+            color: #fff;
+            font-family: Montserrat, sans-serif;
+            font-weight: 500;
 
-        #upload{
-            border-radius: 15px;
-            width: 10%;
-            height: 100%;
+            transition: all 0.2s ease-in-out;
+
+            &[type="upload"] {
+                width: 10%;
+
+                &:hover {
+                cursor: pointer;
+                background: rgba(255, 255, 255, 0.2);
+                }
+
+                &:active {
+                    background: rgba(255, 255, 255, 0.2);
+                }
+            }
+
+            &[type="upload2"] {
+                width: 10%;
+
+                &:hover {
+                cursor: pointer;
+                background: rgba(255, 255, 255, 0.2);
+                }
+
+                &:active {
+                    background: rgba(255, 255, 255, 0.2);
+                }
+            }
         }
 
         #video {
@@ -84,11 +128,11 @@
     </style>
 </head>
 <body>
-    <!-- search and upload -->
+    <!-- search and upload and home -->
     <header>
-        <a href="./frontendDesign.html">HOME</a>
-        <input type="text" id="searchBar" name="searchBar" required minlength="1">
-        <button id="upload">Upload</button>
+        <a href="./frontendDesign.html" id="inputField" type="upload">HOME</a>
+        <input type="text" id="inputField" name="searchBar" required minlength="1" placeholder="Search">
+        <button id="inputField" type="upload">Upload</button>
     </header>
 
     <!-- navigation chips -->
