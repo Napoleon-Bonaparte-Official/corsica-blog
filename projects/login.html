@@ -1,100 +1,47 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <style>
-        /* Add animation to the form elements */
-        .form-group {
-            transition: all 0.3s;
-        }
 
-        .form-group:hover {
-            transform: scale(1.02);
-        }
-
-        .form-control {
-            transition: border-color 0.3s;
-        }
-
-        .form-control.is-invalid {
-            border-color: #ff0000;
-            animation: shake 0.3s;
-        }
-
-        @keyframes shake {
-            0% {
-                transform: translateX(0);
-            }
-            25% {
-                transform: translateX(-5px);
-            }
-            50% {
-                transform: translateX(5px);
-            }
-            75% {
-                transform: translateX(-5px);
-            }
-            100% {
-                transform: translateX(0);
-            }
-        }
-
-        /* Add animation to the submit button */
-        .btn-outline-info {
-            transition: background-color 0.3s, color 0.3s;
-        }
-
-        .btn-outline-info:hover {
-            background-color: #17a2b8;
-            color: #fff;
-        }
-    </style>
 </head>
+
 <body>
-    <form method="POST" action="" style="border: none;" id="myForm">
-        <fieldset class="form-group" style="border: none;">
-            <div class="text-center">
-                <img class="form-group" width="200" height="200" src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.123rf.com%2Fphoto_107778742_video-player-vector-icon-isolated-on-transparent-background-video-player-logo-concept.html&psig=AOvVaw1PfCOCeQiVld_YhdgoLsEH&ust=1706396616382000&source=images&cd=vfe&opi=89978449&ved=0CBMQjRxqFwoTCMDhrfiU_IMDFQAAAAAdAAAAABAD" style="border: none;">
+    <!-- form to allow script to authenticate w/ backend -->
+    <form method="POST" id="myForm">
+
+        <!-- form fields -->
+        <fieldset>
+            <!-- username field -->
+            <div>
+                <input type="text" id="usernameField" name="username" placeholder="Username">
             </div>
-            <h1>Welcome back to NAME HERE</h1>
-            <div class="form-group" style="border: none;">
-                <input type="text" id="usernameField" class="form-control form-control-lg" name="username" placeholder="Username" style="border: none;">
-                <div class="invalid-feedback">
-                    <!-- Error messages for username can be added here -->
-                </div>
-            </div>
-            <div class="form-group" style="border: none;">
-                <input type="password" id="passwordField" class="form-control form-control-lg" name="password" placeholder="Password" style="border: none;">
-                <div class="invalid-feedback">
-                    <!-- Error messages for password can be added here -->
-                </div>
-            </div>
-            <div class="form-group" style="border: none;">
-                <input type="checkbox" class="form-check-input" name="remember">
-                <label class="form-check-label">Remember Me</label>
+
+            <!-- password field -->
+            <div>
+                <input type="password" id="passwordField" name="password" placeholder="Password">
             </div>
         </fieldset>
-        <br>
+
+        <!-- submit button -->
         <input type="hidden" id="csrfTokenField" name="csrf_token" value="">
-        <div class="form-group" style="border: none;">
-            <button type="submit" class="btn btn-outline-info" style="border: none;">Submit</button>
+        <div>
+            <button type="submit">Submit</button>
         </div>
-        <br>
-        <a class="form-group" href="/frontend/register.html">Signup</a><br>
-        <a class="form-group" href="different function to take in predetermined parameters and redirect to chat">Continue as Guest</a>
+
+        <!-- signup button -->
+        <a href="/frontend/register.html">Signup</a><br>
     </form>
 
     <script>
         async function submitForm() {
+            // get the elements (username, password, etc)
             var username = document.getElementById('usernameField');
             var password = document.getElementById('passwordField');
             var form = document.getElementById('myForm');
 
-            
-
-
             try {
                 //const apiUrl = "https://whispbackend.duckdns.org/login";
-                const apiUrl = "http://127.0.0.1:5001/login"
+                const apiUrl = "http://127.0.0.1:8086/api/users/authenticate"
 
                 // Get the form data
                 const formData = new FormData(form);
@@ -107,6 +54,7 @@
                     mode: 'cors',
                 });
 
+                // error occured and login didn't work
                 if (!loginResponse.ok) {
                     throw new Error('Login request was not successful');
                 }
@@ -134,142 +82,11 @@
         }
 
         const form = document.getElementById('myForm');
-        form.addEventListener('submit', function(event) {
+        form.addEventListener('submit', function (event) {
             event.preventDefault();
             submitForm();
         });
-
-
     </script>
-     
-
-<style>
-    /* Discord-based CSS */
-    
-    /* Overall page styles */
-    body {
-        background-color: #36393f; /* Discord dark mode background color */
-        color: #fff;
-        margin: 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        overflow: hidden;
-        height: 100%;
-        background-color: #36393F;
-        color: #FFF;
-        font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        border: none;
-    }
-    
-    .video-container {
-        pointer-events: none;
-        width: 100vw;
-        height: 100vh;
-        z-index: -1;
-    }
-    
-    iframe {
-        pointer-events: none;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        width: 125vw;
-        height: 150vh;
-        transform: translate(-50%, -47%);
-    }
-    
-    /* Form container styles */
-    form {
-        padding: 20px;
-        max-width: 400px;
-        width: 200%;
-        text-align: center;
-        border-radius: 0.25rem;
-        background-color: #202225;
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        /* bring your own prefixes */
-        transform: translate(-50%, -50%);
-        color: #FFFFFF;
-    }
-    
-    /* Form header styles */
-    h1 {
-        font-size: 14px;
-        font-weight: bold;
-        color: #fff;
-    }
-    
-    /* Input field styles */
-    .form-control {
-        background-color: #40444B;
-        /* Remove the border property to eliminate the white border */
-        border: none;
-        border-radius: 0.25rem;
-        color: #fff;
-        width: 100%;
-        padding: 10px;
-        margin: 5px 0;
-        width: 90%;
-    }
-    
-    /* Error message styles */
-    .is-invalid {
-        border: 1px solid #FF0000;
-    }
-    
-    .invalid-feedback {
-        color: #FF0000;
-        font-size: 14px;
-    }
-    
-    /* Remember me checkbox styles */
-    .form-check-input {
-        background-color: #40444B;
-        border: 1px solid #7289DA;
-        color: #fff;
-        margin-right: 10px;
-    }
-    
-    /* Button styles */
-    .btn {
-        background-color: #007bff;
-        width: 100%;
-        color: #fff;
-        border: none;
-        padding: 10px 20px;
-        font-size: 16px;
-        cursor: pointer;
-        border-radius: 5px;
-    }
-    
-    /* Forgot password and Sign up links */
-    a {
-        text-decoration: none;
-        color: #7289DA;
-        cursor: pointer;
-    }
-    
-    /* Hover styles for links */
-    a:hover {
-        text-decoration: underline;
-    }
-    
-    /* Additional styling for the "Create an Account" link */
-    h6 {
-        font-size: 14px;
-        text-align: center;
-        margin-top: 20px;
-    }
-    
-    
-    </style>
 </body>
+
 </html>
-
-
-
-
