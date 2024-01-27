@@ -6,28 +6,26 @@
     <title>Home</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
+            background: #1c1c1e;
+            font-family: 'Montserrat', sans-serif;
         }
 
         header {
-            background-color: #333;
-            color: #fff;
+            background-color: #1c1c1e;
+            color: white;
             padding: 10px;
             text-align: center;
             height: 37px;
         }
 
         nav {
-            background-color: #fff;
+            background-color: #1c1c1e;
             padding: 10px;
         }
 
         nav a {
             text-decoration: none;
-            color: #333;
+            color: white;
             margin: 0 10px;
         }
 
@@ -35,6 +33,9 @@
             margin-bottom: 20px;
         }
 
+        a {
+            color: white;
+        }
 
         #searchBar{
             width: 70%;
@@ -51,22 +52,26 @@
         #video {
             height: 300px;
             cursor: pointer;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            border-radius: 10px;
+
+            border-radius: 20px;
+            border-left: 1px solid rgba(58, 58, 60, 0.3);
+            border-top: 1px solid rgba(58, 58, 60, 0.3);
+            
+            text-align: center;
+            transition: all 0.2s ease-in-out;
+
+            &:hover {
+                box-shadow: 20px 20px 40px -6px rgba(0, 0, 0, 0.2);
+            }
         }
         
         .video {
             width: 100%;
-            margin-bottom: 10px; 
             height: 100%;
             border-radius: 10px;
-            background-color: gray;
         }
 
-        .grid {
+        .videoGrid {
             display: grid;
             gap: 50px;
             grid-template-columns: auto auto auto;
@@ -81,7 +86,6 @@
 <body>
     <!-- search and upload -->
     <header>
-        <!-- <image src="../images/video-vector-icon-png_267481.jpg" style="background:#333;"></image> -->
         <a href="./frontendDesign.html">HOME</a>
         <input type="text" id="searchBar" name="searchBar" required minlength="1">
         <button id="upload">Upload</button>
@@ -95,8 +99,10 @@
         <a href="./category/educational.html">Educational</a>
     </nav>
 
+    <hr>
+
     <!-- video grid -->
-    <div class="grid">
+    <div class="videoGrid">
         <div id="video" class="grid-item">
             <img src="../images/willBlog1.png" class="video">
             <a>FORTNITE BATTLEPASS</a>
