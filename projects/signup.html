@@ -208,13 +208,13 @@
     <script>
         async function submitForm() {
             // get the elements (username, password, etc)
-            var username = document.getElementById('usernameField');
-            var password = document.getElementById('passwordField');
+            const uid = document.getElementById('usernameField').value;
+            const password = document.getElementById('passwordField').value;
             var form = document.getElementById('myForm');
 
             try {
                 //const apiUrl = "https://whispbackend.duckdns.org/login";
-                const apiUrl = "http://127.0.0.1:8086/api/users/authenticate"
+                const apiUrl = "http://127.0.0.1:8086/api/users/"
 
                 // Get the form data
                 const formData = new FormData(form);
@@ -223,8 +223,10 @@
                 // Send a POST request to your backend server
                 const loginResponse = await fetch(apiUrl, {
                     method: 'POST',
-                    body: formData,
-                    mode: 'cors',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ uid, password }) // convert payload to JSON
                 });
 
                 // error occured and login didn't work
