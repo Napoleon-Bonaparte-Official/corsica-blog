@@ -1,4 +1,4 @@
-# https://napoleon-bonaparte-official.github.io/corsica-frontend/
+# [Open Blog](https://napoleon-bonaparte-official.github.io/corsica-blog/)
 
 # IMPORTANT
 
