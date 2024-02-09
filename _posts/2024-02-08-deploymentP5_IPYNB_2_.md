@@ -18,7 +18,7 @@ Deploying a Web Application enables a Server and Web Application to be available
 Listed are Keys, you need to obtain "values" specific to your Web Application setup.  It is important that you recognize the sample "values" as you work through these procedures, then replace them with the "values" that are specific to your Web Application use case.
 
 - GitHub HTTPS link:
-- IAM user:
+- IAM user: 
 - EC2 name:
 - EC2 Public IPs:
 - DNS Name:

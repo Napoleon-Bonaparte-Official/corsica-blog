@@ -29,12 +29,13 @@ type: hacks
 
 ### DNS:
 - DNS allows assigning user-friendly names to web servers, translating human-readable domain names (e.g., nighthawkcoders.com) to IP addresses. This simplifies accessing websites while maintaining security and routing efficiency. It's like a home address when compared to latitude and longitude. It's a lot easier to memorize a home address rather than a super long number.
+- We will be using Route 53 for our DNS, setting a ----.stu.nighthawkcodingsociety.com domain name to the public IP of our server, 18.222.8.201
 
-## Steps for Deployment
+## Steps for Deployment (DEMO)
 
 1. Setting up a backend server:
    1. The first crucial step in deployment is having a backend server. This server enables API testing and website deployment, forming the foundation of your application.
-2. EC2 Configuration:
+2. EC2 Configuration(ALREADY DONE):
    1. Access AWS IAM User: Begin by logging into your AWS account using IAM user credentials.
    2. Launch a New EC2 Instance: Navigate to EC2 and initiate the setup process for a new instance, following the guided steps.
    3. Choose an Amazon Machine Image (AMI): Select Ubuntu as the operating system from the available AMIs.
@@ -42,14 +43,19 @@ type: hacks
    5. Configure Security Settings: Enable access for HTTP and HTTPS protocols to ensure smooth operation of your web application.
    6. Name Your Security Group (.pem) File: Assign a recognizable name to the security group file for SSH access.
    7. Connect to the Instance: Once the instance setup is complete, establish a connection to interact with the virtual machine.
+   8. Since this connection is blocked by School Wi-Fi, we will be using our cockpit website: https://cockpitp2.nighthawkcodingsociety.com
 3. Deployment Process Overview:
    1. After setting up the EC2 instance as outlined above, proceed with the deployment phase.
    2. Each EC2 instance can host multiple backend websites, including those of classmates for testing purposes.
    3. Connection to the EC2 instance occurs via the cloud. By accessing the instances section, you can establish a connection.
    4. Once connected, navigate to the desired instance and initiate the connection process, enabling deployment activities.
 
+You can use the site https://rift24.github.io/RIFT-Frontend to monitor the servers and check the status of your backend.
+
 ### More Details
 
 Extensive step-by-step tutorial (IT IS VERY LONG!!!): [More details](https://napoleon-bonaparte-official.github.io/corsica-blog/2024/02/08/deploymentP5_IPYNB_2_.html)
+
+Here is another updated guide (more details; teacher guide): [AWS Teacher Repo](https://nighthawkcoders.github.io/teacher_portfolio//c7.0/c7.1/c7.2/2023/09/27/aws-deployment_IPYNB_2_.html)
 
 
