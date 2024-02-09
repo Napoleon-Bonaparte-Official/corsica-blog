@@ -20,6 +20,7 @@ type: hacks
 
 ### Docker:
 - Docker and docker-compose simplify web application hosting by automating deployment within lightweight containers. These containers encapsulate all dependencies needed for applications to run efficiently across different environments, such as frameworks like Flask. It's like how you would run `make` for your blog to test things locally before deploying to GitHub Pages.
+![Docker]({{site.baseurl}}/images/docker.png)
 
 ### Nginx:
 - Nginx is an open-source software serving as a web server, reverse proxy, and performing various functions to manage and locate web applications on a server effectively.
