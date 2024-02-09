@@ -1,14 +1,7 @@
 ---
-toc: true
-title: Flask/Python Deployment Guide
-layout: post
-description: Description of key methods process used to deploy a Flask/Python website; AWS EC2, Docker, docker-compose, and Nginx 
-permalink: /techtalk/deploy
-image: /images/aws.png
-categories: [6.B, C7.0, C7.1, C7.2]
-tags: [aws, ec2. docker, nginx, certbot, dns]
-type: pbl
-week: 6
+toc: True
+title: (EXTENSIVE) Flask/Python Deployment Guide
+description: Description of key methods process used to deploy a Flask/Python website; AWS EC2, Docker, docker-compose, and Nginx
 ---
 
 ## Deployment Overview
@@ -726,3 +719,4 @@ lrwxrwxrwx 1 root root 34 Sep 28 21:31 default -> /etc/nginx/sites-available/def
 lrwxrwxrwx 1 root root 44 Oct  2 20:19 shruthi_nighthawk -> /etc/nginx/sites-available/shruthi_nighthawk
 lrwxrwxrwx 1 root root 31 Oct  4 00:48 test -> /etc/nginx/sites-available/test
 ```
+
