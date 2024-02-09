@@ -50,4 +50,6 @@ type: hacks
 
 ### More Details
 
+Extensive step-by-step tutorial (IT IS VERY LONG!!!): [More details](https://napoleon-bonaparte-official.github.io/corsica-blog/2024/02/08/deploymentP5_IPYNB_2_.html)
+
 
