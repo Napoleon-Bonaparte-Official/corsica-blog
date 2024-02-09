@@ -14,6 +14,7 @@ type: hacks
 
 ### AWS EC2:
 - AWS EC2, or Amazon Elastic Compute Cloud, provides scalable and secure computing power for various application needs. It offers low-cost, maintenance-free instances accessible from anywhere via the cloud. Essentially, it's where you host your applications remotely, eliminating the need for local hosting. In other words, it's just a cloud computer you can rent so that your server runs online 24/7.
+![Docker]({{site.baseurl}}/images/instances.png)
 
 ### CORS (Cross-Origin Resource Sharing):
 - CORS defines rules allowing web pages from one domain to request and interact with resources hosted on another domain. It facilitates seamless communication between different domains on the web.
