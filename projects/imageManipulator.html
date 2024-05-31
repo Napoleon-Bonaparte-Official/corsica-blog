@@ -1,0 +1,75 @@
+---
+layout: page
+permalink: /projects/image-encoder/
+---
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <div class="card">
+        <p>Image 1:</p><input type="file" id="image1" accept="image/*" onchange="loadFile(event)">
+        <img id="output" width="200">
+
+        <p>Image 2 (Only XOR)</p><input type="file" id="image2" accept="image/*" onchange="loadFile2(event)">
+        <img id="output2" width="200">
+    </div>
+
+    <br>
+    <br>
+
+    <div class="card">
+        <form id="stegoForm">
+            <label for="stegotype">
+                <p>Choose type of steganography:</p>
+            </label>
+            <select id="stegotype" name="stegotype">
+                <option value="lsb">LSB</option>
+                <option value="msb">MSB</option>
+                <option value="xor">XOR(two images)</option>
+            </select>
+            <!-- <input type="submit" value="Submit"> -->
+        </form>
+    </div>
+
+    <br>
+    <br>
+
+    <div class="card">
+        <div>
+            <h2>Encode Message</h2>
+            <input type="text" id="message" placeholder="Enter message to encode">
+            <button class="buttonNormalDark" onclick="encodeMessage()">Encode</button>
+        </div>
+        <div>
+            <h2>Decode Message</h2>
+            <button class="buttonNormalDark" onclick="decodeMessage()">Decode</button>
+            <p id="decodedMessage"></p>
+        </div>
+        <canvas id="canvas" style="display:none;"></canvas>
+        <script src="/corsica-frontend/scripts/image.js"></script>
+        </section>
+    </div>
+    </div>
+
+</body>
+
+</html>
+
+
+<!-- LSB Section -->
+<script>
+    var loadFile = function (event) {
+        var image = document.getElementById('output');
+        image.src = URL.createObjectURL(event.target.files[0]);
+    };
+    var loadFile2 = function (event) {
+        var image = document.getElementById('output2');
+        image.src = URL.createObjectURL(event.target.files[0]);
+    };
+</script>
