@@ -1,8 +1,8 @@
 title: Corsica
 owner_name: Napolean Bonparte Official
 github_username: will-w-cheng, kinetekenergy, crownedbison, advikg
-github_repo: "Corsica-Frontend"
-baseurl: "/corsica-frontend"
+github_repo: "Corsica-blog"
+baseurl: "/corsica-blog"
 remote_theme: jekyll/minima
 plugins:
 - jekyll-remote-theme
